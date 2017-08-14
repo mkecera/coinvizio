@@ -1,0 +1,164 @@
+{% extends "dashboard/base.html" %}
+
+
+<script>
+    {% block jquery %}
+
+    {% endblock %}
+</script>
+
+
+{% block title %} Dashboard {% endblock title %} 
+
+{% block body %}
+
+    <!--
+    {% if allGainers %}
+        <ul>
+            {% for gainer in allGainers %}
+            <li><a href="{% url 'dashboard:detail' gainer.id %}">{{ gainer.name }}</a></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <h3> Add coins </h3>
+    {% endif %}
+    -->
+
+    <div class="row">
+        <div class="col-sm-4">
+            <div align="center"> 
+                <h4>Market Capitalisation in $</h4>
+            </div>
+            <canvas id="pieMarketCap" width="400" height="400"></canvas>
+        </div>
+        <div class="col-sm-4">
+            <div align="center"> 
+                <h4>24h Change - Top Market Cap</h4>
+            </div>
+            <canvas id="barTopCap24hChange" width="400" height="400"></canvas>
+        </div>
+    </div>
+    <br></br>
+
+    <div class="row">
+        <div class="col-sm-4">
+            <div align="center"> 
+                <h4>24h Top Gainers</h4>
+            </div>
+            <table class="table table-hover table-condensed">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Coin</th>
+                        <th>Market Cap in USD</th>
+                        <th>24h % Change</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if topGainers %}
+                        {% for gainer in topGainers %}
+                            <tr>
+                                <th scope="row">{{forloop.counter}}</th>
+                                <td>{{gainer.coin}}</td>
+                                <td>{{gainer.marketCap}}</td>
+                                <td>{{gainer.percentChange24h}}</td>
+                            </tr>
+                        {% endfor %}
+                    {% endif %}
+                    
+                </tbody>
+            </table>
+        </div>
+        <div class="col-sm-4">
+            <div align="center"> 
+                <h4>24h Top Losers</h4>
+            </div>
+            <table class="table table-hover table-condensed">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Coin</th>
+                        <th>Market Cap in USD</th>
+                        <th>24h % Change</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if topLosers %}
+                        {% for loser in topLosers %}
+                            <tr>
+                                <th scope="row">{{forloop.counter}}</th>
+                                <td>{{loser.coin}}</td>
+                                <td>{{loser.marketCap}}</td>
+                                <td>{{loser.percentChange24h}}</td>
+                            </tr>
+                        {% endfor %}
+                    {% endif %}
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <br></br>
+
+    <div class="row">
+        <div class="col-sm-4">
+            <div align="center"> 
+                <h4>7d Top Gainers</h4>
+            </div>
+            <table class="table table-hover table-condensed">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Coin</th>
+                        <th>Market Cap in USD</th>
+                        <th>7d % Change</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if topGainers7d %}
+                        {% for gainer7d in topGainers7d %}
+                            <tr>
+                                <th scope="row">{{forloop.counter}}</th>
+                                <td>{{gainer7d.coin}}</td>
+                                <td>{{gainer7d.marketCap}}</td>
+                                <td>{{gainer7d.percentChange7d}}</td>
+                            </tr>
+                        {% endfor %}
+                    {% endif %}
+                    
+                </tbody>
+            </table>
+        </div>
+        <div class="col-sm-4">
+            <div align="center"> 
+                <h4>7d Top Losers</h4>
+            </div>
+            <table class="table table-hover table-condensed">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Coin</th>
+                        <th>Market Cap in USD</th>
+                        <th>7d % Change</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if topLosers7d %}
+                        {% for loser7d in topLosers7d %}
+                            <tr>
+                                <th scope="row">{{forloop.counter}}</th>
+                                <td>{{loser7d.coin}}</td>
+                                <td>{{loser7d.marketCap}}</td>
+                                <td>{{loser7d.percentChange7d}}</td>
+                            </tr>
+                        {% endfor %}
+                    {% endif %}
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <br></br>
+
+
+{% endblock body %}

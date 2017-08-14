@@ -1,0 +1,23 @@
+body{
+    background: white url('images/background.jpg');
+}
+
+th {
+    color: grey;
+}
+
+td {
+    color: grey;
+}
+
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+  background-color: black;
+}
+
+li {
+    color:white;
+}
+
+h4 {
+    color: grey;
+}

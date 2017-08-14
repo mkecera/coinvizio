@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <title>
+        {% block title %}
+        {% endblock title %}
+    </title>
+
+    <!--Loads the path to static files-->
+    {% load staticfiles %}
+    <link href="href=https://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet" type="text-css" />
+    <link rel="stylesheet" type="text/css" href="{% static 'dashboard/css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'dashboard/style.css' %}" />
+    <script src="{% static 'dashboard/js/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'dashboard/js/bootstrap.min.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+    <script src="{% static 'dashboard/js/Charts.js' %}"></script>    
+
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <!--Header-->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topNavBar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{% url 'dashboard:index' %}">coinvizio</a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="">
+                        <a href="{% url 'dashboard:index' %}">
+                            <span class="glyphicon glyphicon-stats" aria-hidden="true"></span>&nbsp; Dashboard
+                        </a> 
+                    </li>
+                </ul>
+            </div>    
+        </div>
+    </nav>
+    {% block body %}
+    
+    {% endblock body %}
+
+    <script>
+    $(document).ready(function(){
+        {% block jquery %}{% endblock %}
+    })
+    </script>
+
+</body>
+
+</html>
